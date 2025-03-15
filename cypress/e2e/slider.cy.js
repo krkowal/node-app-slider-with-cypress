@@ -16,3 +16,27 @@ describe('Swiper Gallery Test', function () {
     cy.get('.swiper-slide-active').should('contain', 'Paris');
   });
 });
+
+describe('Swiper Gallery Test', function () {
+  it('Checks if the loop is correct', function () {
+    cy.visit('http://localhost:3000');   
+    cy.get('.swiper-button-next').click();
+    cy.wait(2000);
+    cy.get('.swiper-button-next').click({ force: true });
+    cy.wait(2000);
+    cy.get('.swiper-button-next').click({ force: true });
+    cy.wait(2000);
+    cy.get('.swiper-slide-active').should('contain', 'Rome');
+  });
+});
+
+describe('Swiper Gallery Test', function () {
+  it('Checks if next and previous buttons can be used', function () {
+    cy.visit('http://localhost:3000');
+    cy.get('.swiper-button-next').click();
+    cy.get('.swiper-slide-active').should('contain', 'United Kingdom');
+    cy.wait(2000);
+    cy.get('.swiper-button-prev').click()
+    cy.get('.swiper-slide-active').should('contain', 'Rome');
+  });
+});
